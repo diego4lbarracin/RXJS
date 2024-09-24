@@ -11,15 +11,12 @@
     <button type="submit">Search</button>
   </form>
 </div>
-
 <!-- User Component -->
 <app-user [user]="user$ | async"></app-user>
-
 <!-- Post Component -->
 <ng-container *ngIf="posts$ | async as posts">
   <app-post [posts]="posts"></app-post>
 </ng-container>
-
 <!-- Comments Component -->
 <ng-container *ngIf="comments$ | async as comments">
   <app-comments [comments]="comments"></app-comments>

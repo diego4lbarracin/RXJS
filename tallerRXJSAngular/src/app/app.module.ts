@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
-import { CommentsComponent } from './comment/comment.component'; // Ensure this import is correct
+import { CommentsComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [AppComponent, UserComponent, PostComponent, CommentsComponent],
