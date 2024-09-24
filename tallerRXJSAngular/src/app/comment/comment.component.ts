@@ -6,7 +6,7 @@ import { Comment } from '../model/Comment';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css'],
 })
-export class CommentsComponent {
+export class CommentComponent {
   @Input() comments!: Comment[];
   ngOnChanges(changes: SimpleChanges) {
     if (changes['comments']) {

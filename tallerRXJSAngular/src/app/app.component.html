@@ -12,12 +12,15 @@
   </form>
 </div>
 <!-- User Component -->
+<h2>User Info</h2>
 <app-user [user]="user$ | async"></app-user>
 <!-- Post Component -->
+<h2>User's Posts</h2>
 <ng-container *ngIf="posts$ | async as posts">
   <app-post [posts]="posts"></app-post>
 </ng-container>
 <!-- Comments Component -->
+<h3>Post's Comments</h3>
 <ng-container *ngIf="comments$ | async as comments">
   <app-comments [comments]="comments"></app-comments>
 </ng-container>

@@ -44,11 +44,13 @@ export class AppComponent implements OnInit {
 
   getComments(postIds: number[]) {
     const commentRequests = postIds.map((postId) =>
-      this.http.get<Comment[]>(`${this.ROOT_URL}comments/post/${postId}`)
+      this.http.get<{ comments: Comment[] }>(
+        `${this.ROOT_URL}comments/post/${postId}`
+      )
     );
 
     this.comments$ = forkJoin(commentRequests).pipe(
-      map((commentArrays) => commentArrays.flat())
+      map((responses) => responses.flatMap((response) => response.comments))
     );
 
     this.comments$.subscribe((comments) => {

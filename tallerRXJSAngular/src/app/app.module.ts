@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
-import { CommentsComponent } from './comment/comment.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, PostComponent, CommentsComponent],
+  declarations: [AppComponent, UserComponent, PostComponent, CommentComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

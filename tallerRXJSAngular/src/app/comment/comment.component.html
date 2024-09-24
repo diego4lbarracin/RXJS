@@ -1,8 +1,7 @@
 <div *ngIf="comments">
   <div *ngFor="let comment of comments">
-    <p>{{ comment.body }}</p>
     <p *ngIf="comment.user">By: {{ comment.user.username }}</p>
-    <!-- Debugging statement -->
-    <pre>{{ comment | json }}</pre>
+    <p>Comment: {{ comment.body }}</p>
+    <p>Likes: {{ comment.likes }}</p>
   </div>
 </div>
