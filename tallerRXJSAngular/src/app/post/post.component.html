@@ -1,8 +1,16 @@
+<h2>User's Posts</h2>
 <div *ngIf="posts">
   <div *ngFor="let post of posts">
     <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
     <p>Likes: {{ post.reactions.likes }}</p>
     <p>Dislikes: {{ post.reactions.dislikes }}</p>
+    <button (click)="toggleComments(post.id)">
+      {{ commentsVisibleMap[post.id] ? "Hide Comments" : "Show Comments" }}
+    </button>
+    <app-comments
+      *ngIf="commentsVisibleMap[post.id]"
+      [comments]="commentsMap[post.id] || []"
+    ></app-comments>
   </div>
 </div>

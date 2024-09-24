@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   posts$: Observable<Post[] | null> = of(null);
   comments$: Observable<Comment[] | null> = of(null);
   txtUser: string = '';
+  selectedPostId: number | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +35,6 @@ export class AppComponent implements OnInit {
       .pipe(map((response) => response.posts));
 
     this.posts$.subscribe((posts) => {
-      console.log(posts);
       if (posts) {
         const postIds = posts.map((post) => post.id);
         this.getComments(postIds);
@@ -52,9 +52,10 @@ export class AppComponent implements OnInit {
     this.comments$ = forkJoin(commentRequests).pipe(
       map((responses) => responses.flatMap((response) => response.comments))
     );
+  }
 
-    this.comments$.subscribe((comments) => {
-      console.log(comments); // Log the comments to verify the structure
-    });
+  onPostSelected(postId: number) {
+    this.selectedPostId = postId;
+    this.getComments([postId]);
   }
 }

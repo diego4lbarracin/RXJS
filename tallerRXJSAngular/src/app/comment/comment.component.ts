@@ -8,6 +8,7 @@ import { Comment } from '../model/Comment';
 })
 export class CommentComponent {
   @Input() comments!: Comment[];
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['comments']) {
       console.log('Comments input changed:', this.comments);
