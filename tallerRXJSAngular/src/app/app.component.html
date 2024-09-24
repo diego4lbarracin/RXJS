@@ -11,6 +11,11 @@
     <button type="submit">Search</button>
   </form>
 </div>
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
 <!-- User Component -->
 <app-user [user]="user$ | async"></app-user>
 <!-- Post Component -->

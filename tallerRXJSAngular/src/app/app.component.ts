@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User } from './model/User';
 import { Post } from './model/Post';
 import { Comment } from './model/Comment';
@@ -19,13 +19,22 @@ export class AppComponent implements OnInit {
   comments$: Observable<Comment[] | null> = of(null);
   txtUser: string = '';
   selectedPostId: number | null = null;
+  errorMessage: string | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
   getUser() {
-    this.user$ = this.http.get<User>(`${this.ROOT_URL}users/${this.txtUser}`);
+    this.errorMessage = null; // Reset error message
+    this.user$ = this.http
+      .get<User>(`${this.ROOT_URL}users/${this.txtUser}`)
+      .pipe(
+        catchError((error) => {
+          this.errorMessage = 'User not found. Try again.';
+          return of(null); // Return null observable in case of error
+        })
+      );
     this.getPosts();
   }
 
