@@ -17,7 +17,7 @@
 
 <!-- Post Component -->
 <ng-container *ngIf="posts$ | async as posts">
-  <app-post [posts]="posts" (postSelected)="getComments($event)"></app-post>
+  <app-post [posts]="posts"></app-post>
 </ng-container>
 
 <!-- Comments Component -->

@@ -1,6 +1,6 @@
 <div *ngIf="comments">
   <div *ngFor="let comment of comments">
     <p>{{ comment.body }}</p>
-    <p>By: {{ comment.user.username }}</p>
+    <p *ngIf="comment.user">By: {{ comment.user.username }}</p>
   </div>
 </div>
