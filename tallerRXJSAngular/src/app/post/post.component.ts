@@ -7,7 +7,7 @@ import { Post } from '../model/Post';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent {
-  @Input() posts!: Post[];
+  @Input() posts: Post[] = [];
   @Output() postSelected = new EventEmitter<number>();
 
   selectPost(postId: number) {

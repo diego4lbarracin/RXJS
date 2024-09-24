@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { User } from './model/User';
 import { Post } from './model/Post';
 import { Comment } from './model/Comment';
@@ -24,5 +24,20 @@ export class AppComponent implements OnInit {
 
   getUser() {
     this.user$ = this.http.get<User>(`${this.ROOT_URL}users/${this.txtUser}`);
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.posts$ = this.http
+      .get<{ posts: Post[] }>(`${this.ROOT_URL}posts/user/${this.txtUser}`)
+      .pipe(map((response) => response.posts));
+    this.posts$.subscribe((posts) => console.log(posts));
+  }
+
+  getComments(postId: number) {
+    this.comments$ = this.http.get<Comment[]>(
+      `${this.ROOT_URL}comments/post/${postId}`
+    );
+    this.comments$.subscribe((comments) => console.log(comments));
   }
 }
