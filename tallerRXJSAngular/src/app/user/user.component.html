@@ -1,11 +1,42 @@
-<h2>User Info</h2>
-<div *ngIf="user">
-  <p>Name: {{ user.firstName }} {{ user.lastName }}</p>
-  <p>Username: {{ user.username }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>Phone: {{ user.phone }}</p>
-  <p>Age: {{ user.age }}</p>
-</div>
-<ng-template #noUser>
-  <p>No user selected.</p>
-</ng-template>
+<section id="user-section">
+  <h2>Información</h2>
+  <div *ngIf="user" class="row mt-2">
+    <div class="col-md-7">
+      <div class="info-item d-flex align-items-center mb-3">
+        <div class="icon-circle col1 text-white me-3">
+          <i class="fas fa-user"></i>
+        </div>
+        <p><strong>Nombre:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      </div>
+      <div class="info-item d-flex align-items-center mb-3">
+        <div class="icon-circle col2 text-white me-3">
+          <i class="fas fa-user-tag"></i>
+        </div>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+      </div>
+      <div class="info-item d-flex align-items-center mb-3">
+        <div class="icon-circle col3 text-white me-3">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <p><strong>Correo:</strong> {{ user.email }}</p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="info-item d-flex align-items-center mb-3">
+        <div class="icon-circle col4 text-white me-3">
+          <i class="fas fa-phone"></i>
+        </div>
+        <p><strong>Celular:</strong> {{ user.phone }}</p>
+      </div>
+      <div class="info-item d-flex align-items-center mb-3">
+        <div class="icon-circle col5 text-white me-3">
+          <i class="fas fa-birthday-cake"></i>
+        </div>
+        <p><strong>Edad:</strong> {{ user.age }}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noUser>
+    <p>No user selected.</p>
+  </ng-template>
+</section>

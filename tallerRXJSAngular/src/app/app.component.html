@@ -1,24 +1,35 @@
-<h1>TALLER RXJS ANGULAR</h1>
-<div>
-  <form #form="ngForm" (ngSubmit)="getUser()">
-    <label>User ID: </label>
-    <input
-      type="number"
-      name="User ID"
-      [(ngModel)]="txtUser"
-      placeholder="Type a user's id."
-    />
-    <button type="submit">Search</button>
-  </form>
-</div>
+<section id="search-section" >
+  <div class="d-flex align-items-center justify-content-center">
+    <p class="my-4 me-3">TALLER RXJS ANGULAR</p>
+    
+    <form #form="ngForm" (ngSubmit)="getUser()" class=" align-items-center">
+      <div class="input-group">
+        <input
+          type="number"
+          id="userId"
+          name="User ID"
+          class="form-control"
+          [(ngModel)]="txtUser"
+          placeholder="Ingrese el ID del usuario"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-search ms-2">Buscar</button>
+    </form>
+  </div>
+</section>
+<section id="result-section">
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
 
-<!-- Error Message -->
-<div *ngIf="errorMessage" class="error-message">
-  {{ errorMessage }}
-</div>
-<!-- User Component -->
-<app-user [user]="user$ | async"></app-user>
-<!-- Post Component -->
-<ng-container *ngIf="posts$ | async as posts">
-  <app-post [posts]="posts"></app-post>
-</ng-container>
+  <!-- User Component -->
+    <app-user [user]="user$ | async"></app-user>
+
+    <!-- Post Component -->
+    <ng-container *ngIf="posts$ | async as posts">
+      <app-post [posts]="posts"></app-post>
+    </ng-container>
+
+</section>

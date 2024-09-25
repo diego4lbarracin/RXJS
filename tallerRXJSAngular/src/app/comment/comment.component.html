@@ -1,8 +1,13 @@
-<h2>Post's Comments</h2>
-<div *ngIf="comments">
-  <div *ngFor="let comment of comments">
-    <p *ngIf="comment.user">By: {{ comment.user.username }}</p>
-    <p>Comment: {{ comment.body }}</p>
-    <p>Likes: {{ comment.likes }}</p>
+<hr />
+<section id="comment-section">
+  <div *ngIf="comments">
+    <div *ngFor="let comment of comments" class="comment-item">
+      <p *ngIf="comment.user" class="username">😁 By: {{ comment.user.username }}</p>
+      <div class="comment-body-likes">
+        <p class="comment-body">{{ comment.body }}</p>
+        <p class="likes">👍 {{ comment.likes }}</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+

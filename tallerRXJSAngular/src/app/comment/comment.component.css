@@ -1,0 +1,34 @@
+hr{
+    border: 1px solid #828181;
+    opacity: 1;
+}
+  
+  #comment-section .username {
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: left;
+    width: 100%; 
+    font-weight: bold;
+  }
+  
+  #comment-section .comment-body-likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #comment-section .comment-body {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  #comment-section .likes {
+    display: flex;
+    align-items: center;
+    background-color: #31b4ec;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+  }
+  

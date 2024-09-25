@@ -1,16 +1,31 @@
-<h2>User's Posts</h2>
-<div *ngIf="posts">
-  <div *ngFor="let post of posts">
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.body }}</p>
-    <p>Likes: {{ post.reactions.likes }}</p>
-    <p>Dislikes: {{ post.reactions.dislikes }}</p>
-    <button (click)="toggleComments(post.id)">
-      {{ commentsVisibleMap[post.id] ? "Hide Comments" : "Show Comments" }}
-    </button>
-    <app-comments
-      *ngIf="commentsVisibleMap[post.id]"
-      [comments]="commentsMap[post.id] || []"
-    ></app-comments>
+<section id="post-section">
+  <hr />
+  <div class="marco">
+    <div *ngIf="posts">
+      <div *ngFor="let post of posts" class="marcoPost">
+        <div class="content">
+        <h3>{{ post.title }}</h3>
+        <hr>
+        <p>{{ post.body }}</p>
+        <div class="reactions-and-comments">
+            <div class="reactions">
+              <span class="reaction">
+                👍 {{ post.reactions.likes }} likes
+              </span>
+              <span class="reaction">
+                👎 {{ post.reactions.dislikes }} dislikes
+              </span>
+            </div>
+            <button (click)="toggleComments(post.id)" class="comments-btn">
+              {{ commentsVisibleMap[post.id] ? "Hide Comments" : "Show Comments" }}
+            </button>
+          </div>
+        <app-comments
+          *ngIf="commentsVisibleMap[post.id]"
+          [comments]="commentsMap[post.id] || []"
+        ></app-comments>
+      </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

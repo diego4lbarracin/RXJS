@@ -1,0 +1,81 @@
+#post-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  font-family: "Roboto";
+}
+
+#post-section hr {
+  border: none;
+  height: 2px;
+  margin-top: 4px;
+  opacity: 1;
+  background: linear-gradient(
+    to right,
+    rgba(255, 132, 0, 0),
+    rgba(255, 132, 0, 1),
+    rgba(255, 132, 0, 0)
+  );
+}
+
+#post-section .marco {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#post-section .marcoPost {
+  border: 3px solid transparent;
+  border-radius: 20px;
+  padding: 1px;
+  margin-bottom: 20px;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background-image: linear-gradient(white, white),
+    linear-gradient(90deg, #31b4ec, #30ef60);
+}
+
+#post-section .content {
+  border-radius: 20px;
+  background-color: white;
+  padding: 30px;
+}
+
+#post-section .content h3 {
+  color: rgba(255, 132, 0, 1);
+}
+
+.reactions-and-comments {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.reactions {
+  display: flex;
+  gap: 20px;
+}
+
+.reaction {
+  display: flex;
+  align-items: center;
+  color: rgb(34, 34, 118);
+  font-weight: 500;
+}
+
+.comments-btn {
+  background-color: transparent;
+  color:  rgb(34, 34, 118);
+  text-decoration: underline;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.comments-btn:hover {
+  color: rgb(149, 158, 166);
+}

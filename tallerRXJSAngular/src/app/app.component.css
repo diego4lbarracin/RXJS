@@ -1,0 +1,41 @@
+#search-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-family: "Roboto";
+}
+
+#search-section p{
+    font-family: "Roboto";
+    background: linear-gradient(90deg, #31b4ec, #30ef60);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+#search-section .d-flex{
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#search-section form{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin-left: 200px;
+}
+
+#search-section .btn-search{
+    background-color: #ff8400;
+    color: white;
+}
+
+#search-section .input-group{
+    width: 400px;
+}
