@@ -5,12 +5,12 @@
     <form #form="ngForm" (ngSubmit)="getUser()" class=" align-items-center">
       <div class="input-group">
         <input
-          type="number"
+          type="text"
           id="userId"
-          name="User ID"
+          name="UserName"
           class="form-control"
           [(ngModel)]="txtUser"
-          placeholder="Ingrese el ID del usuario"
+          placeholder="Ingrese el username"
           required
         />
       </div>

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   txtUser: string = '';
   selectedPostId: number | null = null;
   errorMessage: string | null = null;
-
+  userId: number | null = null;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
@@ -28,19 +28,28 @@ export class AppComponent implements OnInit {
   getUser() {
     this.errorMessage = null; // Reset error message
     this.user$ = this.http
-      .get<User>(`${this.ROOT_URL}users/${this.txtUser}`)
+      .get<any>(`${this.ROOT_URL}users/filter?key=username&value=${this.txtUser}`)
       .pipe(
+        map((response: any) => {
+          const users = response.users;
+          if (users.length === 0) {
+            throw new Error('Username not found');
+          }
+          const user = users[0]; // Return the first (and only) element in the array
+          this.userId = user.id; // Extract the id from the user object
+          if (this.userId !== null) {
+            this.getPosts(this.userId);
+          }          return user;
+        }),
         catchError((error) => {
-          this.errorMessage = 'User not found. Try again.';
+          this.errorMessage = error.message;
           return of(null); // Return null observable in case of error
         })
       );
-    this.getPosts();
   }
-
-  getPosts() {
+  getPosts(userId: number) {
     this.posts$ = this.http
-      .get<{ posts: Post[] }>(`${this.ROOT_URL}posts/user/${this.txtUser}`)
+      .get<{ posts: Post[] }>(`${this.ROOT_URL}posts/user/${userId}`)
       .pipe(map((response) => response.posts));
 
     this.posts$.subscribe((posts) => {
